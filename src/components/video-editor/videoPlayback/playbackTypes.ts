@@ -80,6 +80,8 @@ export interface VideoPlaybackProps {
 	cropRegion?: import("../types").CropRegion;
 	webcam?: WebcamOverlaySettings;
 	webcamVideoPath?: string | null;
+	screenLayerVisible?: boolean;
+	webcamLayerVisible?: boolean;
 	aspectRatio: AspectRatio;
 	annotationRegions?: AnnotationRegion[];
 	autoCaptions?: CaptionCue[];

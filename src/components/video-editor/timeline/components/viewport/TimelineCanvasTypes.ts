@@ -40,6 +40,11 @@ export interface TimelineCanvasProps {
 	liveHiddenItemIds?: string[];
 	isDragging?: boolean;
 	isLoading?: boolean;
+	screenLayerVisible?: boolean;
+	onToggleScreenLayer?: () => void;
+	webcamLayerVisible?: boolean;
+	onToggleWebcamLayer?: () => void;
+	hasWebcam?: boolean;
 }
 
 export interface TimelineCanvasRowsProps {
@@ -83,4 +88,9 @@ export interface TimelineCanvasRowsProps {
 	onCaptionRowMouseLeave: MouseEventHandler<HTMLDivElement>;
 	onCaptionRowMouseDown: MouseEventHandler<HTMLDivElement>;
 	onCaptionRowClick: MouseEventHandler<HTMLDivElement>;
+	screenLayerVisible?: boolean;
+	onToggleScreenLayer?: () => void;
+	webcamLayerVisible?: boolean;
+	onToggleWebcamLayer?: () => void;
+	hasWebcam?: boolean;
 }

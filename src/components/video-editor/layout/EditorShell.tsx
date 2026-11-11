@@ -542,6 +542,11 @@ export function EditorShell(props: Props) {
 								normalizedCursorTelemetry={cursor.normalizedCursorTelemetry}
 								currentTime={ui.currentTime}
 								handleSelectAnnotation={handleSelectAnnotation}
+								screenLayerVisible={timeline.screenLayerVisible}
+								onToggleScreenLayer={() => timeline.setScreenLayerVisible((v) => !v)}
+								webcamLayerVisible={timeline.webcamLayerVisible}
+								onToggleWebcamLayer={() => timeline.setWebcamLayerVisible((v) => !v)}
+								hasWebcam={Boolean(props.appearance.webcam?.sourcePath && props.appearance.webcam?.enabled)}
 							/>
 						</AutoZoomNudgeContext.Provider>
 					</div>

@@ -135,6 +135,8 @@ export function EditorVideoPreview({
 					: Math.max(0, Math.min(1, previewVolume * audio.embeddedSourcePreviewGain))
 			}
 			suspendRendering={suspendRendering}
+			screenLayerVisible={timeline.screenLayerVisible}
+			webcamLayerVisible={timeline.webcamLayerVisible}
 			{...handlers}
 		/>
 	);

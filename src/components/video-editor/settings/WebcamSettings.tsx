@@ -349,7 +349,7 @@ export function WebcamSettings({
 					>
 						{(
 							[
-								["circle", "webcamCircle", "Circle"],
+								["circle", "webcamCircle", "Full Circle"],
 								["squircle", "webcamSquircle", "Square"],
 								["rectangle", "webcamRectangle", "Rectangle"],
 							] as const

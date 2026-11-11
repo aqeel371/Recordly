@@ -38,6 +38,8 @@ export function useTimelineState() {
 	const [autoCaptionSettings, setAutoCaptionSettings] = useState<AutoCaptionSettings>(
 		DEFAULT_AUTO_CAPTION_SETTINGS,
 	);
+	const [screenLayerVisible, setScreenLayerVisible] = useState(true);
+	const [webcamLayerVisible, setWebcamLayerVisible] = useState(true);
 
 	return {
 		zoomRegions,
@@ -78,5 +80,9 @@ export function useTimelineState() {
 		setAutoCaptions,
 		autoCaptionSettings,
 		setAutoCaptionSettings,
+		screenLayerVisible,
+		setScreenLayerVisible,
+		webcamLayerVisible,
+		setWebcamLayerVisible,
 	};
 }

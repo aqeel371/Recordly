@@ -80,6 +80,8 @@ export type PlaybackViewInput = Pick<
 	| "handleLoadedMetadata"
 	| "onDurationChange"
 	| "onError"
+	| "screenLayerVisible"
+	| "webcamLayerVisible"
 >;
 export function PlaybackView(input: PlaybackViewInput) {
 	const {
@@ -130,6 +132,8 @@ export function PlaybackView(input: PlaybackViewInput) {
 		handleLoadedMetadata,
 		onDurationChange,
 		onError,
+		screenLayerVisible = true,
+		webcamLayerVisible = true,
 	} = input;
 
 	return (
@@ -192,6 +196,8 @@ export function PlaybackView(input: PlaybackViewInput) {
 				style={{
 					filter: sceneEffects.shadowFilter,
 					visibility: isGap ? "hidden" : "visible",
+					opacity: screenLayerVisible ? 1 : 0,
+					pointerEvents: screenLayerVisible ? "auto" : "none",
 				}}
 			/>
 			{/* Only render overlay after PIXI and video are fully initialized */}
@@ -234,6 +240,7 @@ export function PlaybackView(input: PlaybackViewInput) {
 								style={{
 									display:
 										webcam.enabled &&
+										webcamLayerVisible &&
 										!isGap &&
 										isWebcamVisibleAtSourceTime(webcam, currentTime)
 											? "block"

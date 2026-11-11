@@ -48,6 +48,11 @@ export default function TimelineCanvas({
 	liveHiddenItemIds,
 	isDragging = false,
 	isLoading = false,
+	screenLayerVisible,
+	onToggleScreenLayer,
+	webcamLayerVisible,
+	onToggleWebcamLayer,
+	hasWebcam,
 }: TimelineCanvasProps) {
 	const { setTimelineRef, style, sidebarWidth, direction, range, valueToPixels, pixelsToValue } =
 		useTimelineContext();
@@ -358,6 +363,11 @@ export default function TimelineCanvas({
 					onCaptionRowMouseLeave={handleCaptionRowMouseLeave}
 					onCaptionRowMouseDown={handleCaptionRowMouseDown}
 					onCaptionRowClick={handleCaptionRowClick}
+					screenLayerVisible={screenLayerVisible}
+					onToggleScreenLayer={onToggleScreenLayer}
+					webcamLayerVisible={webcamLayerVisible}
+					onToggleWebcamLayer={onToggleWebcamLayer}
+					hasWebcam={hasWebcam}
 				/>
 			</div>
 		</div>

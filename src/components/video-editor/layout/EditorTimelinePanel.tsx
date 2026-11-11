@@ -33,6 +33,11 @@ type Props = {
 	normalizedCursorTelemetry: ReturnType<typeof useTimelineState>["cursorTelemetry"];
 	currentTime: number;
 	handleSelectAnnotation: (id: string | null) => void;
+	screenLayerVisible?: boolean;
+	onToggleScreenLayer?: () => void;
+	webcamLayerVisible?: boolean;
+	onToggleWebcamLayer?: () => void;
+	hasWebcam?: boolean;
 };
 
 export function EditorTimelinePanel(props: Props) {
@@ -53,6 +58,11 @@ export function EditorTimelinePanel(props: Props) {
 		normalizedCursorTelemetry,
 		currentTime,
 		handleSelectAnnotation,
+		screenLayerVisible,
+		onToggleScreenLayer,
+		webcamLayerVisible,
+		onToggleWebcamLayer,
+		hasWebcam,
 	} = props;
 
 	return (
@@ -167,6 +177,11 @@ export function EditorTimelinePanel(props: Props) {
 				getSourceAudioTrackSettingsForClip={audio.getSourceAudioTrackSettingsForClip}
 				onSourceAudioAvailabilityChange={timeline.setHasClipSourceAudio}
 				onSourceAudioTracksMetaChange={audio.onSourceAudioTracksMetaChange}
+				screenLayerVisible={screenLayerVisible}
+				onToggleScreenLayer={onToggleScreenLayer}
+				webcamLayerVisible={webcamLayerVisible}
+				onToggleWebcamLayer={onToggleWebcamLayer}
+				hasWebcam={hasWebcam}
 			/>
 		</div>
 	);

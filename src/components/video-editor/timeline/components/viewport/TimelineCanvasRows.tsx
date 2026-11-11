@@ -10,7 +10,9 @@ import { getEmbeddedCaptionSpan, getRegionDisplaySpan } from "../../core/clipPre
 import {
 	CAPTION_ROW_ID,
 	CLIP_ROW_ID,
+	SCREEN_ROW_ID,
 	SOURCE_AUDIO_ROW_ID,
+	WEBCAM_ROW_ID,
 	ZOOM_ROW_ID,
 } from "../../core/constants";
 import {
@@ -72,6 +74,11 @@ export const TimelineCanvasRows = memo(function TimelineCanvasRows({
 	onCaptionRowMouseLeave,
 	onCaptionRowMouseDown,
 	onCaptionRowClick,
+	screenLayerVisible,
+	onToggleScreenLayer,
+	webcamLayerVisible,
+	onToggleWebcamLayer,
+	hasWebcam,
 }: TimelineCanvasRowsProps) {
 	const t = useScopedT("timeline");
 	const { shortcuts, isMac } = useShortcuts();
@@ -190,6 +197,62 @@ export const TimelineCanvasRows = memo(function TimelineCanvasRows({
 
 	return (
 		<>
+			<Row
+				id={SCREEN_ROW_ID}
+				compact
+				label="Screen"
+				labelColor="#7c9"
+				layerVisible={screenLayerVisible}
+				onToggleLayerVisible={onToggleScreenLayer}
+			>
+				{clipPresentation.map((item) => (
+					<div
+						key={`screen-${item.id}`}
+						className="absolute top-1/2 -translate-y-1/2 h-[70%] rounded-md"
+						style={{
+							[direction === "rtl" ? "right" : "left"]: valueToPixels(
+								item.displaySpan.start - rangeStart,
+							),
+							width: valueToPixels(item.displaySpan.end - item.displaySpan.start),
+							background: screenLayerVisible
+								? "rgba(119, 204, 153, 0.25)"
+								: "rgba(119, 204, 153, 0.08)",
+							border: "1px solid rgba(119, 204, 153, 0.3)",
+							opacity: screenLayerVisible ? 1 : 0.4,
+						}}
+					/>
+				))}
+			</Row>
+
+			{hasWebcam && (
+				<Row
+					id={WEBCAM_ROW_ID}
+					compact
+					label="Webcam"
+					labelColor="#c97"
+					layerVisible={webcamLayerVisible}
+					onToggleLayerVisible={onToggleWebcamLayer}
+				>
+					{clipPresentation.map((item) => (
+						<div
+							key={`webcam-${item.id}`}
+							className="absolute top-1/2 -translate-y-1/2 h-[70%] rounded-md"
+							style={{
+								[direction === "rtl" ? "right" : "left"]: valueToPixels(
+									item.displaySpan.start - rangeStart,
+								),
+								width: valueToPixels(item.displaySpan.end - item.displaySpan.start),
+								background: webcamLayerVisible
+									? "rgba(204, 153, 119, 0.25)"
+									: "rgba(204, 153, 119, 0.08)",
+								border: "1px solid rgba(204, 153, 119, 0.3)",
+								opacity: webcamLayerVisible ? 1 : 0.4,
+							}}
+						/>
+					))}
+				</Row>
+			)}
+
 			{(captionsEnabled || captionItems.length > 0) && (
 				<Row
 					id={CAPTION_ROW_ID}

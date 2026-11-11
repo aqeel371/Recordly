@@ -92,6 +92,11 @@ export interface TimelineEditorProps {
 	sourceAudioTrackSettings?: SourceAudioTrackSettings;
 	getSourceAudioTrackSettingsForClip?: (clipId: string | null) => SourceAudioTrackSettings;
 	onSourceAudioTracksMetaChange?: (tracks: SourceAudioTrackMeta) => void;
+	screenLayerVisible?: boolean;
+	onToggleScreenLayer?: () => void;
+	webcamLayerVisible?: boolean;
+	onToggleWebcamLayer?: () => void;
+	hasWebcam?: boolean;
 }
 
 export interface TimelineEditorHandle {
@@ -165,6 +170,11 @@ const TimelineEditor = forwardRef<TimelineEditorHandle, TimelineEditorProps>(
 			sourceAudioTrackSettings = {},
 			getSourceAudioTrackSettingsForClip,
 			onSourceAudioTracksMetaChange,
+			screenLayerVisible,
+			onToggleScreenLayer,
+			webcamLayerVisible,
+			onToggleWebcamLayer,
+			hasWebcam,
 		},
 		ref,
 	) {
@@ -552,6 +562,11 @@ const TimelineEditor = forwardRef<TimelineEditorHandle, TimelineEditorProps>(
 							liveHiddenItemIds={Array.from(liveZoomPreview.hiddenZoomIds)}
 							isDragging={isDragging}
 							isLoading={isLoading}
+							screenLayerVisible={screenLayerVisible}
+							onToggleScreenLayer={onToggleScreenLayer}
+							webcamLayerVisible={webcamLayerVisible}
+							onToggleWebcamLayer={onToggleWebcamLayer}
+							hasWebcam={hasWebcam}
 						/>
 					</TimelineWrapper>
 				</div>
